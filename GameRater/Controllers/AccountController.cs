@@ -11,11 +11,9 @@ using Microsoft.Owin.Security;
 using GameRater.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-
 namespace GameRater.Controllers
 {
     [Authorize]
-
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -24,7 +22,6 @@ namespace GameRater.Controllers
         public AccountController()
         {
         }
-
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;

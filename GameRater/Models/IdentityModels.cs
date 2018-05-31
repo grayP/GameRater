@@ -21,7 +21,7 @@ namespace GameRater.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("GameRaterEntities", throwIfV1Schema: false)
+            : base("GameRaterIdentity", throwIfV1Schema: false)
         {
         }
 
