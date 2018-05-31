@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRaterData", "GameRaterD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseModel", "BaseModel\BaseModel.csproj", "{B9517F34-D764-4FC5-8C4F-BB7D5707885B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBaseScript", "DataBaseScript", "{1954B62A-F119-4345-9EB5-EFF2672BA3CC}"
+	ProjectSection(SolutionItems) = preProject
+		GameRater\Scripts\gamerater.sql = GameRater\Scripts\gamerater.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
