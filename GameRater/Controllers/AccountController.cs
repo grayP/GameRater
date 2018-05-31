@@ -13,7 +13,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GameRater.Controllers
 {
-    [Authorize]
+
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -155,7 +155,7 @@ namespace GameRater.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    AddUserToRole(user, model.Role);
+                    AddUserToRole(user, model.Role ?? "User");
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

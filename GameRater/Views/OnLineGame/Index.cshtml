@@ -40,12 +40,12 @@
                 <button id="btnReset" class="btn btn-sm btn-primary" data-pdsa-action="resetsearch">
                     <i class="glyphicon glyphicon-share-alt"></i>&nbsp; Reset
                 </button>
-                @*@if (User.IsInRole("SuperUser"))
-                {*@
+                @if (User.IsInRole("User"))
+                {
                     <button id="btnAdd" class="btn btn-sm btn-primary" data-pdsa-action="add">
                         <i class="glyphicon glyphicon-plus-sign"></i>&nbsp; Add
                     </button>
-                @*}*@
+                }
             </div>
 
         </div>
@@ -65,7 +65,7 @@
                         <th class="centrealign">Description</th>
                         <th class="centrealign">Rating</th>
 
-                        @if (User.IsInRole("SuperUser"))
+                        @if (User.IsInRole("User"))
                         {
                             <th class="pdsa-action-button-column">Delete</th>
                         }
@@ -78,9 +78,9 @@
                         <td class="pdsa-action-button-column"><a href="#" data-pdsa-action="edit" data-pdsa-val="@item.Id" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a></td>
                         <td title="@item.Id">@item.GameTitle</td>
                         <td>@item.GameDescription</td>
-                        <td>@item.GameRating</td>
+                        <td class="centrealign">@item.GameRating</td>
 
-                        @if (User.IsInRole("SuperUser"))
+                        @if (User.IsInRole("User"))
                         {
                             <td class="pdsa-action-button-column"><a href="#" data-pdsa-action="delete" data-pdsa-val="@item.Id" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-trash"></i></a></td>
                         }

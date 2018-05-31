@@ -36,7 +36,7 @@ namespace GameRater
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -65,23 +65,22 @@ namespace GameRater
             //    ClientId = "",
             //    ClientSecret = ""
             //});
-          //AddUserAndRole(ApplicationDbContext.Create());
-           //SeedUsers();
-           // var success = AddUserAndRole(ApplicationDbContext.Create());
+            AddUserAndRole(ApplicationDbContext.Create());
+            //  SeedUsers();
+            // var success = AddUserAndRole(ApplicationDbContext.Create());
             // Security security= new Security();
-//security.AddUserToRole(ApplicationDbContext.Create(),"gray.pritchett@optusnet.com.au", "Admin");
+            //security.AddUserToRole(ApplicationDbContext.Create(),"gray.pritchett@optusnet.com.au", "Admin");
 
         }
 
 
         internal class Security
         {
-           // = new ApplicationDbContext();
+            // = new ApplicationDbContext();
 
-            internal void AddUserToRole(ApplicationDbContext context ,string userName, string roleName)
+            internal void AddUserToRole(ApplicationDbContext context, string userName, string roleName)
             {
                 var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-
                 try
                 {
                     var user = UserManager.FindByName(userName);
@@ -95,43 +94,34 @@ namespace GameRater
             }
         }
 
-
-
         private void SeedUsers()
         {
 
             string _role = "Admin";
             if (!Roles.RoleExists(_role))
                 Roles.CreateRole(_role);
-
-          
         }
-
-
 
         bool AddUserAndRole(GameRater.Models.ApplicationDbContext context)
         {
-           // IdentityResult ir;
+            // IdentityResult ir;
             var rm = new RoleManager<IdentityRole>
                 (new RoleStore<IdentityRole>(context));
-          //  var ir = rm.Create(new IdentityRole("Admin"));
+            var ir = rm.Create(new IdentityRole("User"));
+            ir = rm.Create(new IdentityRole("Admin"));
+            ir = rm.Create(new IdentityRole("SuperUser"));
             var um = new UserManager<ApplicationUser>(
                 new UserStore<ApplicationUser>(context));
 
-
-
             var user = new ApplicationUser()
             {
-                UserName = "admin@als.com",
-                Email = "admin@als.com"
+                UserName = "admin@als.com.au",
+                Email = "admin@als.com.au"
             };
 
-            var ir = um.Create(user, "P@ssword1");
-            //if (ir.Succeeded == false)
-            //    return ir.Succeeded;
+            ir = um.Create(user, "P@ssword1");
+            if (ir.Succeeded == false)  return ir.Succeeded;
             ir = um.AddToRole(user.Id, "SuperUser");
-
-   
             return ir.Succeeded;
 
         }

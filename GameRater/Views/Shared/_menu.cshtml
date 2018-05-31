@@ -1,7 +1,6 @@
 ﻿@if (User.IsInRole("SuperUser"))
 {
     <li>@Html.ActionLink("Home", "Index", "Games")</li>
-    <li>@Html.ActionLink("Log", "Index", "Loggings", new { filter = "Result" }, null)</li>
 }
 else if (User.IsInRole("Admin"))
 {
